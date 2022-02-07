@@ -1,0 +1,12 @@
+[submodule "lib/pytorch-metric-learning"]
+	path = lib/pytorch-metric-learning
+	url = https://github.com/flymin/pytorch-metric-learning.git
+[submodule "lib/auto-attack"]
+	path = lib/auto-attack
+	url = https://github.com/flymin/auto-attack.git
+[submodule "lib/RobustBench"]
+	path = lib/RobustBench
+	url = https://github.com/flymin/robustbench
+[submodule "lib/pytorch-ssim"]
+	path = lib/pytorch-ssim
+	url = https://github.com/Po-Hsun-Su/pytorch-ssim.git
