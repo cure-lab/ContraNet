@@ -120,7 +120,7 @@ Densenet169:https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/vi
  ```
  python lpDMLpretrain.py
  ```
- Then, train the MLP part of DMM with fixed feature extractor model:
+ Then, train the MLP part of DMM with the fixed feature extractor model:
  ```
- python lpDMLpretrain.py
-```
+ python lpmplMix.py
+ ```
