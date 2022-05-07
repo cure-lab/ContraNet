@@ -1,6 +1,6 @@
 # ContraNet
 
-Official implementation for paper: *What You See is Not What the Network Infers: Detecting Adversarial Examples Based on Semantic Contradiction*. NDSS 2022
+Official implementation for paper: *What You See is Not What the Network Infers: Detecting Adversarial Examples Based on Semantic Contradiction*. NDSS 2022 [[ArXiv]](https://arxiv.org/abs/2201.09650) [[PDF]](https://arxiv.org/pdf/2201.09650.pdf)
 
 ![overview](fig/Overview.png)
 
