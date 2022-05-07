@@ -8,18 +8,21 @@ Official implementation for paper: *What You See is Not What the Network Infers:
 
 In this paper, we propose a novel AE detection framework based on the very nature of AEs, i.e., their semantic information is inconsistent with the discriminative features extracted by the target DNN model. To be speciﬁc, the proposed solution, namely ContraNet 1 , models such contradiction by ﬁrst taking both the input and the inference result to a generator to obtain a synthetic output and then comparing it against the original input. For legitimate inputs that are correctly inferred, the synthetic output tries to reconstruct the input. On the contrary, for AEs, instead of reconstructing the input, the synthetic output would be created to conform to the wrong label whenever possible. Consequently, by measuring the distance between the input and the synthetic output with metric learning, we can differentiate AEs from legitimate inputs. We perform comprehensive evaluations under various AE attack scenarios, and experimental results show that ContraNet outperforms existing solutions by a large margin, especially under adaptive attacks. Moreover, our analysis shows that successful AEs that can bypass ContraNet tend to have much-weakened adversarial semantics. We have also shown that ContraNet can be easily combined with adversarial training techniques to achieve further improved AE defense capabilities.
 
-## About this repo
+## TODO
 
-The training code of ContraNet is in `./cifar10_ContraNet`.
+- [x] The testing code of ContraNet against white-box attacks, see  `./whitebox_attacks`
+- [x] The testing code of ContraNet against adaptive attacks, see `./adaptive_attacks`
+- [x] The training code of ContraNet's deep metric model, see `./whitebox_attacks`.
+- [x] The training code of ContraNet's generative model on cifar10, see `./cifar10_ContraNet`.
+- [ ] The training code of ContraNet's generative model on gtsrb
+- [ ] The training code of ContraNet's generative model on mnist
 
-The testing code of ContraNet against _white-box_ attacks are in `./whitebox_attacks` and _adaptive attacks_ in `./adaptive_attacks`.
+## Prerequisites
 
-### Prerequisties
-Install necessay dependencies listed in `environment.yaml`
+All python dependencies are listed in `environment.yaml`.
 
-### Pretained models
+Pre-trained models on Google Drive
 
-on Google Drive
 <div align="center">
 
   | Datatset | Classifier                                                   | cGAN                                                         | Similarity Measure Model                                     |
