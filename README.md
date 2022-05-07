@@ -104,7 +104,7 @@ Densenet169:https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/vi
  ```
  python mydiscriminator_main.py
  ```
- Once the second discriminator is done, finetune the cGAN model with the obtained second discriminator as an additional objective item by changing the adding_noise_worker.py to worker_train_d2D.py. Then run:
+ Once the second discriminator is done, finetune the cGAN model with the obtained second discriminator as an additional objective item by changing the ` adding_noise_worker.py` to `worker_train_d2D.py`. Then run:
  ```
  python adding_noise_main.py
  ```
