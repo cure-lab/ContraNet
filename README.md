@@ -93,7 +93,7 @@ Densenet169:https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/vi
 
 
 # Training 
-0. ` cd cifar10_ContraNet'
+0. ` cd cifar10_ContraNet`
 1. step 1: Train the cGAN component of ContraNet:
  ```
  python adding_noise_main.py 
