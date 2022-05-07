@@ -74,7 +74,7 @@ Please check [whitebox_attacks](whitebox_attacks) for more details.
    python adding_noise_main.py 
    ```
    Note that, you may turn off the --resume option if you want to train the model from scratch. After step 1, the basic version of ContraNet's generator part is done. Step 2 aimming to further improve the quality of the synthesis, one may skip this step.
-   Our cGAN's implementation is based on https://github.com/POSTECH-CVLab/PyTorch-StudioGAN, one may refer to this repo for more instructions.
+   Our cGAN's implementation is based on [StudioGAN](https://github.com/POSTECH-CVLab/PyTorch-StudioGAN), one may refer to this repo for more instructions.
 
 2. (optional) Train the second discriminator to help the cGAN generating synthesis more faithful to the input image.
    ```
