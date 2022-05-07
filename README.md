@@ -14,28 +14,19 @@ The training code of ContraNet is in `./cifar10_ContraNet`.
 
 The testing code of ContraNet against _white-box_ attacks are in `./whitebox_attacks` and _adaptive attacks_ in `./adaptive_attacks`.
 
-**Prerequisties:**
-Install necessay dependencies listed in ` environment.yaml`
+### Prerequisties
+Install necessay dependencies listed in `environment.yaml`
 
+### Pretained models
 
-**Pretained models:**
+on Google Drive
+<div align="center">
 
-_Similarity Measure Model:_
+  | Datatset | Classifier                                                   | cGAN                                                         | Similarity Measure Model                                     |
+| :---: | :---: | :---: | :---: |
+| cifar10  | [Densenet169](https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/view?usp=sharing) | [Encoder(E)](https://drive.google.com/file/d/1U5F2UsKSX67mJ-hU4rh1-AZgUXCPDf0G/view?usp=sharing), [Encoder(V)](https://drive.google.com/file/d/1PmGwrB1eODsiQQu8TPad4oskolIoveMY/view?usp=sharing), [Generator](https://drive.google.com/file/d/1PueCACxOCh6-wdiss3BHBL021VjPdCwv/view?usp=sharing) | [dis](https://drive.google.com/file/d/1XOT_kyrJTwbs78vdWMJFNLl2lGoZa9az/view?usp=sharing), [DMM](https://drive.google.com/file/d/19qJdRq05X4vR60y3SLk32X-NYUQkfMM7/view?usp=sharing) |
 
-dis: https://drive.google.com/file/d/1XOT_kyrJTwbs78vdWMJFNLl2lGoZa9az/view?usp=sharing
-
-DMM: https://drive.google.com/file/d/19qJdRq05X4vR60y3SLk32X-NYUQkfMM7/view?usp=sharing
-
-_cGAN:_
-
-Encoder:https://drive.google.com/file/d/1U5F2UsKSX67mJ-hU4rh1-AZgUXCPDf0G/view?usp=sharing 
-https://drive.google.com/file/d/1PmGwrB1eODsiQQu8TPad4oskolIoveMY/view?usp=sharing
-
-generator:https://drive.google.com/file/d/1PueCACxOCh6-wdiss3BHBL021VjPdCwv/view?usp=sharing
-
-_classifiers:_
-
-Densenet169:https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/view?usp=sharing
+</div>
 
 ## Test ContraNet
 
@@ -45,12 +36,13 @@ Please check [whitebox_attacks](whitebox_attacks) for more details.
 
 ### ContraNet against adaptive attacks.
 
-0. `cd adaptive_attacks`
+`cd adaptive_attacks`
 1. Download pretrained models to `./pretrain`
 2. Download classifier `densenet169.pt` to `./`
 3. For PGD adaptive attacks, run:
   ```
-  python adaptive_targeted_PGD_linf.py [--adaptive_PGD_loss all| ssim_dis_dml| dis_dml| ssim_dis| ssim_dml| dis| dml| ssim]
+  python adaptive_targeted_PGD_linf.py \
+      [--adaptive_PGD_loss all| ssim_dis_dml| dis_dml| ssim_dis| ssim_dml| dis| dml| ssim]
   ```
 4. For ATC+ContraNet against PGD adaptive attacks, run:
 ```
@@ -58,11 +50,14 @@ Please check [whitebox_attacks](whitebox_attacks) for more details.
 ```
 5. For OrthogonalPGD attack, run:
 ```
-  python OrthogonalPGD/contraNetattack.py [--fpr 5|50] [--attack_iteration 200|40] [--adaptive_PGD_loss all| ssim_dis_dml| dis_dml| ssim_dis| ssim_dml| dis| dml| ssim]
+  python OrthogonalPGD/contraNetattack.py [--fpr 5|50] [--attack_iteration 200|40] \
+      [--adaptive_PGD_loss all| ssim_dis_dml| dis_dml| ssim_dis| ssim_dml| dis| dml| ssim]
 ```
 6. ContraNet+ATC against OrthogonalPGD, run:
 ```
-  python OrthogonalPGD/robust_classifier_adaptive_targeted_PGD_linf.py  [--fpr 5|50] [--attack_iteration 200|40] [--adaptive_PGD_loss all| ssim_dis_dml| dis_dml| ssim_dis| ssim_dml| dis| dml| ssim]
+  python OrthogonalPGD/robust_classifier_adaptive_targeted_PGD_linf.py  [--fpr 5|50] \
+      [--attack_iteration 200|40] \
+      [--adaptive_PGD_loss all| ssim_dis_dml| dis_dml| ssim_dis| ssim_dml| dis| dml| ssim]
 ```
 7. For C&W adaptive attacks, run:
 ```
