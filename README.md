@@ -99,6 +99,7 @@ Densenet169:https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/vi
  python adding_noise_main.py 
  ```
  Note that, you may turn off the --resume option if you want to train the model from scratch. After step 1, the basic version of ContraNet's generator part is done. Step 2 aimming to further improve the quality of the synthesis, one may skip this step.
+ Our cGAN's implementation is based on https://github.com/POSTECH-CVLab/PyTorch-StudioGAN, one may refer to this repo for more instructions.
 2. step 2 (optional): Train the second discriminator to help the cGAN generating synthesis more faithful to the input image.
  ```
  python mydiscriminator_main.py
@@ -114,4 +115,12 @@ Densenet169:https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/vi
  4. step 4: Train the DMM component in the similarity measurement model.
  ```
  cd whitebox_attacks
- bash 
+ ```
+ First, train the feature extractor part of DMM:
+ ```
+ python lpDMLpretrain.py
+ ```
+ Then, train the MLP part of DMM with fixed feature extractor model:
+ ```
+ python lpDMLpretrain.py
+```
