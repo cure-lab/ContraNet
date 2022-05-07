@@ -1,12 +1,15 @@
-[submodule "lib/pytorch-metric-learning"]
-	path = lib/pytorch-metric-learning
+[submodule "whitebox_attacks/lib/pytorch-metric-learning"]
+	path = whitebox_attacks/lib/pytorch-metric-learning
 	url = https://github.com/flymin/pytorch-metric-learning.git
-[submodule "lib/auto-attack"]
-	path = lib/auto-attack
-	url = https://github.com/flymin/auto-attack.git
-[submodule "lib/RobustBench"]
-	path = lib/RobustBench
-	url = https://github.com/flymin/robustbench
-[submodule "lib/pytorch-ssim"]
-	path = lib/pytorch-ssim
+	branch = label_input
+[submodule "whitebox_attacks/lib/auto-attack"]
+	path = whitebox_attacks/lib/auto-attack
+	url = https://github.com/flymin/auto-attack
+	branch = dev
+[submodule "whitebox_attacks/lib/pytorch-ssim"]
+	path = whitebox_attacks/lib/pytorch-ssim
 	url = https://github.com/Po-Hsun-Su/pytorch-ssim.git
+[submodule "whitebox_attacks/lib/Robust-Bench"]
+	path = whitebox_attacks/lib/Robust-Bench
+	url = https://github.com/flymin/robustbench
+	branch = dev
