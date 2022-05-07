@@ -14,11 +14,11 @@ Otherwise, please use the following command
 git submodule update --init --recursive
 ```
 
-All the softlinks in `whitebox_attacks/lib` should locate their origin automatically.
+All the softlinks in `whitebox_attacks/lib` should locate their origins automatically.
 
 ### Prepare pre-trained cGAN
 
-Download pretrained cGAN and classifier as indicated in [top-level readme.md](../README.md) to `./pretrain`, the structure is as follows
+Download pretrained cGAN and classifier as indicated in [top-level readme.md](../README.md#prerequisites) to `./pretrain`, the structure is as follows
 
 ```
 pretrain/
@@ -56,21 +56,21 @@ The directory structure should be as follows:
 ```
 whitebox_attacks/
 ├── results
-|		├── MobileNetV2-cifar10-2021-04-10-11-21-11
-│   │		├── MobileNetV2.pth
-│   │		├── MobileNetV2_bestE3acc95.82.pth
-│   │		├── args.json
-│   │		├── lpmlpMix-10.log
-│   │		└── tensorboard
+|   ├── MobileNetV2-cifar10-2021-04-10-11-21-11
+│   │       ├── MobileNetV2.pth
+│   │       ├── MobileNetV2_bestE3acc95.82.pth
+│   │       ├── args.json
+│   │       ├── lpmlpMix-10.log
+│   │       └── tensorboard
 │ 	└── cifar10AEPgd2
-│   		└── MobileNetV2-dense.01E.2_112000cifar10CondPgd-2021-05-24-12-35-50
-│       		├── MobileNetV2.pth
-│       		├── MobileNetV2_AEbestE91V97.48.pth
-│       		├── MobileNetV2_bestE77V92.18.pth
-│       		├── [base]MobileNetV2-dense.01E.2_112000cifar10CondPgd-2021-05-18-20-47-08
-│       		├── args.json
-│       		├── lpmlpMix-Dense.01PgdE.2_112000.log
-│       		└── tensorboard
+│           └── MobileNetV2-dense.01E.2_112000cifar10CondPgd-2021-05-24-12-35-50
+│               ├── MobileNetV2.pth
+│               ├── MobileNetV2_AEbestE91V97.48.pth
+│               ├── MobileNetV2_bestE77V92.18.pth
+│               ├── [base]MobileNetV2-dense.01E.2_112000cifar10CondPgd-2021-05-18-20-47-08
+│               ├── args.json
+│               ├── lpmlpMix-Dense.01PgdE.2_112000.log
+│               └── tensorboard
 └── pretrain
     └── done
         ├── MobileNetV2-256_32_2cifar10Gen-2021-04-08-21-32-16
@@ -123,7 +123,7 @@ results/
 ```
 
 2. Setup Python environment as `environment.yaml`.
-3. Generate whitebox samples. See `scripts/gen_whitebox_sample.sh`. **Note that** the output information is **NOT** the final results because we didn't set correct threshold here. If you have other generated AEs, you may skip this step. But please make sure to keep the data format the same as ours.
+3. Generate whitebox samples. See `scripts/gen_whitebox_sample.sh`. <br>**Note that** the output information is **NOT** the final results because we didn't set correct threshold here. If you have other generated AEs, you may skip this step, but please make sure to keep the data format the same as ours.
 
 4. Plot ROC curve and get the threshold at `FPR@95%`. see `scripts/roc_threshold.sh`.
 
