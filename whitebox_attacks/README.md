@@ -18,7 +18,7 @@ All the softlinks in `whitebox_attacks/lib` should locate their origins automati
 
 ### Prepare pre-trained cGAN
 
-Download pretrained cGAN and classifier as indicated in [top-level readme.md](../README.md#prerequisites) to `./pretrain`, the structure is as follows
+Download pretrained cGAN and classifier as indicated in [top-level readme.md](../README.md#prerequisites) to `whitebox_attacks/pretrain`, the structure is as follows
 
 ```
 pretrain/
