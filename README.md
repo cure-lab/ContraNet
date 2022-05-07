@@ -1,4 +1,15 @@
 # ContraNet
+
+Official implementation for paper: *What You See is Not What the Network Infers: Detecting Adversarial Examples Based on Semantic Contradiction*. NDSS 2022
+
+![overview](fig/Overview.png)
+
+**Abstract**: Adversarial examples (AEs) pose severe threats to the applications of deep neural networks (DNNs) to safety-critical domains, e.g., autonomous driving. While there has been a vast body of AE defense solutions, to the best of our knowledge, they all suffer from some weaknesses, e.g., defending against only a subset of AEs or causing a relatively high accuracy loss for legitimate inputs. Moreover, most existing solutions cannot defend against adaptive attacks, wherein attackers are knowledgeable about the defense mechanisms and craft AEs accordingly.
+
+In this paper, we propose a novel AE detection framework based on the very nature of AEs, i.e., their semantic information is inconsistent with the discriminative features extracted by the target DNN model. To be speciﬁc, the proposed solution, namely ContraNet 1 , models such contradiction by ﬁrst taking both the input and the inference result to a generator to obtain a synthetic output and then comparing it against the original input. For legitimate inputs that are correctly inferred, the synthetic output tries to reconstruct the input. On the contrary, for AEs, instead of reconstructing the input, the synthetic output would be created to conform to the wrong label whenever possible. Consequently, by measuring the distance between the input and the synthetic output with metric learning, we can differentiate AEs from legitimate inputs. We perform comprehensive evaluations under various AE attack scenarios, and experimental results show that ContraNet outperforms existing solutions by a large margin, especially under adaptive attacks. Moreover, our analysis shows that successful AEs that can bypass ContraNet tend to have much-weakened adversarial semantics. We have also shown that ContraNet can be easily combined with adversarial training techniques to achieve further improved AE defense capabilities.
+
+## About this repo
+
 The training code of ContraNet is in `./cifar10_ContraNet`.
 
 The testing code of ContraNet against _white-box_ attacks are in `./whitebox_attacks` and _adaptive attacks_ in `./adaptive_attacks`.
@@ -26,45 +37,14 @@ _classifiers:_
 
 Densenet169:https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/view?usp=sharing
 
+## Test ContraNet
 
-# Whitebox Test
-0. `cd whitebox_attacks`.
-1.  Download pretrained cGAN and classifier to `./pretrain`
-    ```
-    pretrain/
-    ├── cifar10_adding_noise_cGAN_112000
-    │   ├── dis.pth
-    │   ├── model=E-current-weights-step=112000.pth
-    │   ├── model=G-current-weights-step=112000.pth
-    │   └── model=V-current-weights-step=112000.pth
-    ├── classifier
-    │   ├── densenet169.pt
+### Whitebox Test
 
-    ```
-2. Download pretrained DMM to `./results`
-    ```
-    results/
-    ├── cifar10AEPgd2
-    │   └── MobileNetV2-dense.01E.2_112000cifar10CondPgd-2021-05-24-12-35-50
-    │       └── MobileNetV2_91V97.48.pth
+Please check [whitebox_attacks](whitebox_attacks) for more details.
 
-    ```
-3. Setup Python environment as `environment.yaml`.
-4. Generate whitebox samples. See `scripts/gen_whitebox_sample.sh`. **Note
-   that** the output information is not the final results because we didn't set
-   correct threshold here.
+### ContraNet against adaptive attacks.
 
-5. Plot ROC curve and get the threshold at `FPR@95%`. see
-   `scripts/roc_threshold.sh`.
-
-6. Finally, TPR and Detector's Accuracy can be tested through
-   `scripts/test_whitebox.sh`. Furthre, AutoAttack whitebox results can be
-   tested with `test/eval_detectorDictAA.py`.
-
-
-
-
-# ContraNet against adaptive attacks.
 0. `cd adaptive_attacks`
 1. Download pretrained models to `./pretrain`
 2. Download classifier `densenet169.pt` to `./`
@@ -89,38 +69,44 @@ Densenet169:https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/vi
   python targeted_cw_adaptive_attack.py
 ```
 
+## Train ContraNet
 
+` cd cifar10_ContraNet`
 
+1. Train the cGAN component of ContraNet:
 
-# Training 
-0. ` cd cifar10_ContraNet`
-1. step 1: Train the cGAN component of ContraNet:
- ```
- python adding_noise_main.py 
- ```
- Note that, you may turn off the --resume option if you want to train the model from scratch. After step 1, the basic version of ContraNet's generator part is done. Step 2 aimming to further improve the quality of the synthesis, one may skip this step.
- Our cGAN's implementation is based on https://github.com/POSTECH-CVLab/PyTorch-StudioGAN, one may refer to this repo for more instructions.
-2. step 2 (optional): Train the second discriminator to help the cGAN generating synthesis more faithful to the input image.
- ```
- python mydiscriminator_main.py
- ```
- Once the second discriminator is done, finetune the cGAN model with the obtained second discriminator as an additional objective item by changing the ` adding_noise_worker.py` to `worker_train_d2D.py`. Then run:
- ```
- python adding_noise_main.py
- ```
- 3. step 3: Train the Dis component in the similarity measurement model.
- ```
- python noisecGAN_adding_bengin_noise_augmentation_using_discrimator_as_dml.py
- ```
- 4. step 4: Train the DMM component in the similarity measurement model.
- ```
- cd whitebox_attacks
- ```
- First, train the feature extractor part of DMM:
- ```
- python lpDMLpretrain.py
- ```
- Then, train the MLP part of DMM with the fixed feature extractor model:
- ```
- python lpmplMix.py
- ```
+   ```
+   python adding_noise_main.py 
+   ```
+   Note that, you may turn off the --resume option if you want to train the model from scratch. After step 1, the basic version of ContraNet's generator part is done. Step 2 aimming to further improve the quality of the synthesis, one may skip this step.
+   Our cGAN's implementation is based on https://github.com/POSTECH-CVLab/PyTorch-StudioGAN, one may refer to this repo for more instructions.
+
+2. (optional) Train the second discriminator to help the cGAN generating synthesis more faithful to the input image.
+   ```
+   python mydiscriminator_main.py
+   ```
+   Once the second discriminator is done, finetune the cGAN model with the obtained second discriminator as an additional objective item by changing the ` adding_noise_worker.py` to `worker_train_d2D.py`. Then run:
+   ```
+   python adding_noise_main.py
+   ```
+
+3. Train the Dis component in the similarity measurement model.
+   ```
+   python noisecGAN_adding_bengin_noise_augmentation_using_discrimator_as_dml.py
+   ```
+ 4. Train the DMM component in the similarity measurement model. Please check [whitebox_attacks](whitebox_attacks) for more details
+
+## Cite ContraNet
+
+If you find this repository useful for your work, please consider citing it as follows:
+
+```bibtex
+@inproceedings{Yang2022WhatYS,
+  title     = {What You See is Not What the Network Infers: Detecting Adversarial Examples Based on Semantic Contradiction},
+  author    = {Yang, Yijun and Gao, Ruiyuan and Li, Yu and Lai, Qiuxia and Xu, Qiang},
+  booktitle = {Network and Distributed System Security Symposium (NDSS)},
+  year      = {2022}
+}
+```
+
+Please remember to cite all the datasets and backbone estimators if you use them in your experiments.
