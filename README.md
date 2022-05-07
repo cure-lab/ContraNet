@@ -1,6 +1,7 @@
 # ContraNet
-We release testing code of ContraNet against _white-box_ attacks in `./whitebox_attacks` and _adaptive attacks_ in `./adaptive_attacks`.
-Traning code for ContraNet will be available once the paper is published.
+The training code of ContraNet is in `./cifar10_ContraNet`.
+
+The testing code of ContraNet against _white-box_ attacks are in `./whitebox_attacks` and _adaptive attacks_ in `./adaptive_attacks`.
 
 **Prerequisties:**
 Install necessay dependencies listed in ` environment.yaml`
@@ -87,3 +88,30 @@ Densenet169:https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/vi
 ```
   python targeted_cw_adaptive_attack.py
 ```
+
+
+
+
+# Training 
+0. ` cd cifar10_ContraNet'
+1. step 1: Train the cGAN component of ContraNet:
+ ```
+ python adding_noise_main.py 
+ ```
+ Note that, you may turn off the --resume option if you want to train the model from scratch. After step 1, the basic version of ContraNet's generator part is done. Step 2 aimming to further improve the quality of the synthesis, one may skip this step.
+2. step 2 (optional): Train the second discriminator to help the cGAN generating synthesis more faithful to the input image.
+ ```
+ python mydiscriminator_main.py
+ ```
+ Once the second discriminator is done, finetune the cGAN model with the obtained second discriminator as an additional objective item by changing the adding_noise_worker.py to worker_train_d2D.py. Then run:
+ ```
+ python adding_noise_main.py
+ ```
+ 3. step 3: Train the Dis component in the similarity measurement model.
+ ```
+ python noisecGAN_adding_bengin_noise_augmentation_using_discrimator_as_dml.py
+ ```
+ 4. step 4: Train the DMM component in the similarity measurement model.
+ ```
+ cd whitebox_attacks
+ bash 
