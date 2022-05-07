@@ -91,6 +91,10 @@ Please check [whitebox_attacks](whitebox_attacks) for more details.
    ```
  4. Train the DMM component in the similarity measurement model. Please check [whitebox_attacks](whitebox_attacks) for more details
 
+## Baselines
+
+For fair comparison with other methods, we re-implemented other baseline methods and test them under the same protocol. Please check [AEdetection](https://github.com/flymin/AEdetection) for more details.
+
 ## Cite ContraNet
 
 If you find this repository useful for your work, please consider citing it as follows:
