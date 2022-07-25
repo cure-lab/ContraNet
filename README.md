@@ -27,7 +27,7 @@ Pre-trained models on Google Drive
 
   | Datatset | Classifier                                                   | cGAN                                                         | Similarity Measure Model                                     |
 | :---: | :---: | :---: | :---: |
-| cifar10  | [Densenet169](https://drive.google.com/file/d/1kK-2wlu5xgS-iV6R5cGBG_Zyc7wwD4O9/view?usp=sharing) | [Encoder(E)](https://drive.google.com/file/d/1U5F2UsKSX67mJ-hU4rh1-AZgUXCPDf0G/view?usp=sharing), [Encoder(V)](https://drive.google.com/file/d/1PmGwrB1eODsiQQu8TPad4oskolIoveMY/view?usp=sharing), [Generator](https://drive.google.com/file/d/1PueCACxOCh6-wdiss3BHBL021VjPdCwv/view?usp=sharing) | [dis](https://drive.google.com/file/d/1XOT_kyrJTwbs78vdWMJFNLl2lGoZa9az/view?usp=sharing), [DMM](https://drive.google.com/file/d/19qJdRq05X4vR60y3SLk32X-NYUQkfMM7/view?usp=sharing) |
+| cifar10  | [Densenet169](https://drive.google.com/file/d/1QbVdCiaTySYhD_vfNL0l70FnJxALi6WX/view?usp=sharing) | [Encoder(E)](https://drive.google.com/file/d/1U5F2UsKSX67mJ-hU4rh1-AZgUXCPDf0G/view?usp=sharing), [Encoder(V)](https://drive.google.com/file/d/1PmGwrB1eODsiQQu8TPad4oskolIoveMY/view?usp=sharing), [Generator](https://drive.google.com/file/d/1PueCACxOCh6-wdiss3BHBL021VjPdCwv/view?usp=sharing) | [dis](https://drive.google.com/file/d/1XOT_kyrJTwbs78vdWMJFNLl2lGoZa9az/view?usp=sharing), [DMM](https://drive.google.com/file/d/19qJdRq05X4vR60y3SLk32X-NYUQkfMM7/view?usp=sharing) |
 
 </div>
 
