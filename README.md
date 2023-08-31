@@ -14,7 +14,7 @@ In this paper, we propose a novel AE detection framework based on the very natur
 - [x] The testing code of ContraNet against adaptive attacks, see `./adaptive_attacks`
 - [x] The training code of ContraNet's deep metric model, see `./whitebox_attacks`.
 - [x] The training code of ContraNet's generative model on cifar10, see `./cifar10_ContraNet`.
-- [ ] The training code of ContraNet's generative model on gtsrb
+- [x] The training code of ContraNet's generative model on gtsrb, see `./GTSRB_ContraNet`.
 - [ ] The training code of ContraNet's generative model on mnist
 
 ## Prerequisites
@@ -28,7 +28,7 @@ Pre-trained models on Google Drive
   | Datatset | Classifier                                                   | cGAN                                                         | Similarity Measure Model                                     |
 | :---: | :---: | :---: | :---: |
 | cifar10  | [Densenet169](https://drive.google.com/file/d/1QbVdCiaTySYhD_vfNL0l70FnJxALi6WX/view?usp=sharing) | [Encoder(E)](https://drive.google.com/file/d/1U5F2UsKSX67mJ-hU4rh1-AZgUXCPDf0G/view?usp=sharing), [Encoder(V)](https://drive.google.com/file/d/1PmGwrB1eODsiQQu8TPad4oskolIoveMY/view?usp=sharing), [Generator](https://drive.google.com/file/d/1PueCACxOCh6-wdiss3BHBL021VjPdCwv/view?usp=sharing) | [dis](https://drive.google.com/file/d/1XOT_kyrJTwbs78vdWMJFNLl2lGoZa9az/view?usp=sharing), [DMM](https://drive.google.com/file/d/19qJdRq05X4vR60y3SLk32X-NYUQkfMM7/view?usp=sharing) |
-
+| GTSRB | [Resnet18](https://drive.google.com/file/d/1qXeioIUa2BvXdTjVGTRGA8vbvbBj5xdQ/view?usp=share_link)| [Encoder(E)](https://drive.google.com/file/d/1mYudnBI3pkEqXS21Hb8kq9qdsCc9XoSX/view?usp=share_link), [Encoder(V)](https://drive.google.com/file/d/1lu8oK2OJOeu90EiW7rA94sYZakmhOIc9/view?usp=share_link), [Generator](https://drive.google.com/file/d/1XDVrhFVgr_syTPMwvN3FnbABhkV58jQL/view?usp=share_link) |[dis](https://drive.google.com/file/d/1jig_GXxL4634VzTifnKk9OwXWroK4zSk/view?usp=share_link), [DMM](https://drive.google.com/file/d/1-ESV6KexFsJxCw3a7UnahELMe0WSyNC-/view?usp=share_link)|
 </div>
 
 ## Test ContraNet
